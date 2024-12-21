@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaflet Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.2/nouislider.min.css">
+    <style>
+        #map {
+            height: 500px; /* Set the map height */
+            width: 50%; /* Full width */
+            margin-left: 20%;
+        }
+    </style>
+    <style src="style.css"></style>
+</head>
+<body>
+    <h1>Data Visualization Final Project</h1>
+    <h2>Time</h2>
+    <div id="slider"></div>
+    <div class="output">
+        <span>Lower: <span id="lowerValue">20</span></span>
+        <span>Upper: <span id="upperValue">80</span></span>
+    </div>
+    <h2>Magnitude</h2>
+    <div id="mag-slider"></div>
+    <div class="output-mag">
+        <span>Lower: <span id="lowermag">20</span></span>
+        <span>Upper: <span id="uppermag">80</span></span>
+    </div>
+    <button id="playbtn">Play/Pause</button>
+    <button id="togglepnt">toggle point</button>
+    <p>Ctrl + Mouse to select, shift to clear the selection</p>
+    <p>Play/Pause will play the data in sliding window</p>
+    <p>Toggle Point will display / hide the datapoint</p>
+    <div id="map"></div>
+    <div id="histogram-depth"></div>
+    <div id="histogram-magnitude"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.2/nouislider.min.js"></script>
+    <script src="./heatmap.min.js"></script>
+    <script src="./leaflet-heatmap.js"></script>
+    <script src="script.js">
+    </script>
+</body>
+</html>

@@ -1,3 +1,40 @@
+// add text before rendering the histogram
+const addPlaceholderStyles = () => {
+  const style = document.createElement('style');
+  style.textContent = `
+    .histogram-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;  
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      padding-top: 4rem;     // Add this line to push text down
+      text-align: center;
+      color: #969696;
+      font-size: 0.9rem;
+    }
+  `;
+  document.head.appendChild(style);
+};
+
+const initializeHistogramPlaceholders = () => {
+  const depthHistogram = document.getElementById('histogram-depth');
+  const magnitudeHistogram = document.getElementById('histogram-magnitude');
+  
+  const placeholderHTML = `
+    <div class="histogram-placeholder">
+      <div><strong>💡 Ctrl + Mouse</strong> to select data points on the map</div>
+      <div style="margin-top: 1rem;"> 💡 Press <strong>Shift</strong> to clear the selection</div>
+    </div>
+  `;
+  
+  depthHistogram.innerHTML = placeholderHTML;
+  magnitudeHistogram.innerHTML = placeholderHTML;
+};
+
+
 
 var displaypoint = true
 const readData = async () => {
@@ -16,7 +53,8 @@ const renderDots = (data, map) => {
 }
 // render histogram
 // D3 Histogram Function
-const renderHistogram = (inputdata, target, property, title, xAxisLabel, yAxisLabel) => {
+// const renderHistogram = (inputdata, target, property, title, xAxisLabel, yAxisLabel) => {
+const renderHistogram = (inputdata, target, property, xAxisLabel, yAxisLabel) => {
   // Set dimensions
   const margin = { top: 20, right: 30, bottom: 50, left: 80 };
   const width = 400 - margin.left - margin.right;
@@ -86,7 +124,7 @@ const renderHistogram = (inputdata, target, property, title, xAxisLabel, yAxisLa
   // Append x-axis label
   svg.append("text")
     .attr("x", width / 2)
-    .attr("y", height + margin.bottom - 25) // Position below x-axis
+    .attr("y", height + margin.bottom - 15) // Position below x-axis
     .attr("text-anchor", "middle")
     .style("font-size", "12px")
     .text(xAxisLabel);
@@ -101,11 +139,11 @@ const renderHistogram = (inputdata, target, property, title, xAxisLabel, yAxisLa
     .text(yAxisLabel);
 
   // Append title
-  svg.append("text")
-    .attr("x", width / 2)
-    .attr("y", height + margin.bottom - 10)
-    .attr("text-anchor", "middle")
-    .text(title);
+  // svg.append("text")
+  //  .attr("x", width / 2)
+  //  .attr("y", height + margin.bottom - 10)
+  //  .attr("text-anchor", "middle")
+  //  .text(title);
 }
 const renderHeatmap = (inputdata, map, val) => {
   // heatmap
@@ -128,6 +166,10 @@ const renderHeatmap = (inputdata, map, val) => {
 }
 
 const main = async () => {
+
+  // Add placeholder styles for histograms
+  addPlaceholderStyles();
+  initializeHistogramPlaceholders();
 
   // Initialize the map
   const map = L.map('map').setView([23, 120], 4);
@@ -166,6 +208,8 @@ const main = async () => {
   const magslider = document.getElementById('mag-slider');
   noUiSlider.create(magslider, {
     start: [6, 8], // Initial values for lower and upper handles
+    orientation: 'vertical',
+    direction: 'rtl',
     connect: true,  // Show the range between handles
     range: {
       min: 2,
@@ -289,9 +333,12 @@ const main = async () => {
 
       // Render histograms for magnitude and depth
       const selectedData = selectedMarkers.map((e) => e.data)
-      renderHistogram(selectedData, "#histogram-magnitude", "ML", "Magnitude Histogram", "Magnitude", "Frequency");
+      // renderHistogram(selectedData, "#histogram-magnitude", "ML", "Magnitude Histogram", "Magnitude", "Frequency");
+      renderHistogram(selectedData, "#histogram-magnitude", "ML", "Magnitude", "Frequency");
+
       const selectedData2 = selectedMarkers.map((e) => e.data)
-      renderHistogram(selectedData2, "#histogram-depth", "depth", "Depth Histogram", "Depth(km)", "Frequency");
+      // renderHistogram(selectedData2, "#histogram-depth", "depth", "Depth Histogram", "Depth(km)", "Frequency");
+      renderHistogram(selectedData2, "#histogram-depth", "depth", "Depth(km)", "Frequency");
 
       //map.removeLayer(rectangle); // Remove rectangle after selection
       renderDots(data, map)

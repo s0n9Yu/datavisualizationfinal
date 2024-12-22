@@ -3,47 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leaflet Map</title>
+    <title>Group 26 -- Data Vis -- Final Project</title>
+    <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.2/nouislider.min.css">
     <style>
-        #map {
-            height: 500px; /* Set the map height */
-            width: 50%; /* Full width */
-            margin-left: 20%;
+        .noUi-connect {
+            background: #80cdc1 !important;
         }
     </style>
-    <style src="style.css"></style>
 </head>
 <body>
-    <h1>Data Visualization Final Project</h1>
-    <h2>Time</h2>
-    <div id="slider"></div>
-    <div class="output">
-        <span>Lower: <span id="lowerValue">20</span></span>
-        <span>Upper: <span id="upperValue">80</span></span>
-    </div>
-    <h2>Magnitude</h2>
-    <div id="mag-slider"></div>
-    <div class="output-mag">
-        <span>Lower: <span id="lowermag">20</span></span>
-        <span>Upper: <span id="uppermag">80</span></span>
-    </div>
-    <button id="playbtn">Play/Pause</button>
-    <button id="togglepnt">toggle point</button>
-    <p>Ctrl + Mouse to select, shift to clear the selection</p>
-    <p>Play/Pause will play the data in sliding window</p>
-    <p>Toggle Point will display / hide the datapoint</p>
-    <div id="map"></div>
-    <div id="histogram-depth"></div>
-    <div id="histogram-magnitude"></div>
+    <div class="container">
+        <h1>Data Visualization Final Project</h1>
+        <h1>Group 26 : Taiwan Earthquake Record Visualization</h1>
 
+        <div class="main-content">
+            <!-- Magnitude Slider (Vertical) -->
+            <div class="magnitude-controls">
+                <h2>Magnitude</h2>
+                <div class="slider-container">
+                    <div class="output-mag upper-value">Upper: <span id="uppermag">8</span></div>
+                    <div id="mag-slider"></div>
+                    <div class="output-mag lower-value">Lower: <span id="lowermag">6</span></div>
+                </div>
+            </div>
+
+            <!-- Central Content -->
+            <div class="central-content">
+                <!-- Map -->
+                <div id="map"></div>
+                
+                <!-- Time Controls (Below Map) -->
+                <div class="time-controls">
+                    <h2>Time (sliding window interval) </h2>
+                    <div id="slider"></div>
+                    <div class="output">
+                        <span>From: <span id="lowerValue">20</span></span>
+                        <span>Until: <span id="upperValue">80</span></span>
+                    </div>
+                </div>
+
+                <!-- Controls Section -->
+                <div class="controls-section">
+                    <div class="button-container">
+                        <button id="playbtn">Play/Pause</button>
+                        <button id="togglepnt">Toggle Point</button>
+                    </div> 
+                    
+                    <div class="instructions">
+                        <!-- <p>Ctrl + Mouse to select, shift to clear the selection</p> -->
+                        <p>💡 Select the <strong>Time Interval & Magnitude</strong>, then press the buttons 💡 </p>
+                        <p>🕹 Play/Pause will play the data in sliding window</p>
+                        <p>🕹 Toggle Point will display / hide the datapoints</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Histograms (Vertical Stack on Right) -->
+            <div class="histogram-container">
+                <div class="histogram-box">
+                    <h3>Depth Histogram</h3>
+                    <div id="histogram-depth"></div>
+                </div>
+                <div class="histogram-box">
+                    <h3>Magnitude Histogram</h3>
+                    <div id="histogram-magnitude"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.2/nouislider.min.js"></script>
     <script src="./heatmap.min.js"></script>
     <script src="./leaflet-heatmap.js"></script>
-    <script src="script.js">
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

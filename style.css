@@ -1,0 +1,358 @@
+/* Modern CSS Reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+    padding: 1rem;
+}
+
+.container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Header Styles */
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+h2 {
+    color: #34495e;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+/* Main Content Layout */
+.main-content {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    height: calc(100vh - 200px);
+    min-height: 600px;
+}
+
+/* Magnitude Slider Container */
+.magnitude-controls {
+    width: 120px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 100%;
+}
+
+.magnitude-controls h2 {
+    transform: rotate(-90deg);
+    transform-origin: left top;
+    position: absolute;
+    left: 1rem;
+    top: 55%;
+    white-space: nowrap;
+    margin: 0;
+    padding: 0;
+    font-size: 1.2rem;
+    color: #34495e;
+}
+
+.slider-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    position: relative;
+    margin-left: 1.5rem;
+    padding: 9.5rem 0 3rem 0; /* Increased top padding */
+}
+
+/* Output Text Styles */
+.output-mag {
+    width: 100%;
+    font-size: 0.9rem;
+    color: #666;
+    position: absolute;
+    white-space: nowrap;
+    text-align: center;
+    /* font-weight: bold;  Makes the font bold */
+}
+
+.upper-value {
+    top: 5rem; /* Increased top spacing */
+}
+
+.lower-value {
+    bottom: 2rem;
+}
+
+/* NoUI Slider Base Styles */
+.noUi-target {
+    border: none;
+    box-shadow: none;
+    background: #e9e9e9;
+}
+
+.noUi-base {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.noUi-connects {
+    background: transparent;
+    height: 100%;
+}
+
+.noUi-connect {
+    /*  background: #3498db; */
+    background: #2ecc71; /* Green color */
+
+}
+
+/* Vertical Slider Styles */
+.noUi-vertical {
+    width: 8px;
+    height: calc(100% - 3rem) !important; /* Adjusted height */
+}
+
+.noUi-vertical .noUi-origin {
+    bottom: 0;
+}
+
+.noUi-vertical .noUi-handle {
+    width: 16px;
+    height: 16px;
+    right: -4px;
+    border: 1px solid #d9d9d9;
+    background: #ccccccfd;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+    cursor: pointer;
+    border-radius: 0;
+    margin-top: -8px;
+}
+
+/* Horizontal Slider Styles */
+.noUi-horizontal {
+    height: 8px;
+}
+
+.noUi-horizontal .noUi-handle {
+    width: 16px;
+    height: 16px;
+    top: -5px;
+    right: -8px;
+    border-radius: 0;
+    border: 1px solid #d9d9d9;
+    background: #ccccccfd;
+}
+
+/* Remove default handle styling */
+.noUi-handle:before,
+.noUi-handle:after {
+    display: none;
+}
+
+/* Time Controls */
+.time-controls {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* .time-controls h2 {
+ make the text center 
+    text-align: center;
+} */
+
+#slider {
+    margin: 1rem 0;
+}
+
+.output {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.5rem;
+}
+
+
+/* Central Content */
+.central-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    min-width: 0;
+}
+
+/* Map */
+#map {
+    flex-grow: 1;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    min-height: 400px;
+}
+
+/* Controls Section */
+.controls-section {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.button-container {
+    display: flex;
+    gap: 1rem;
+    min-width: fit-content;
+    padding-left: 3em;
+}
+
+/* Instructions */
+.instructions {
+    flex-grow: 1;
+    margin-left: 6rem; 
+}
+
+.instructions p {
+    margin: 0.3rem 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Button Styles */
+button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+/* Histograms */
+.histogram-container {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: 100%;
+}
+
+.histogram-box {
+    flex: 1;
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.histogram-box h3 {
+    color: #34495e;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+#histogram-depth,
+#histogram-magnitude {
+    flex: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .main-content {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .magnitude-controls {
+        width: 100%;
+        height: auto;
+        padding: 2rem;
+    }
+
+    .slider-container {
+        flex-direction: row;
+        height: 50px;
+        padding: 0;
+        margin-left: 0;
+    }
+
+    .magnitude-controls h2 {
+        transform: none;
+        position: static;
+        margin-bottom: 1rem;
+    }
+
+    #mag-slider {
+        height: 8px;
+        width: 300px;
+        margin: 0 2rem;
+    }
+
+    .output-mag {
+        position: static;
+        padding: 0;
+    }
+
+    .histogram-container {
+        width: 100%;
+        flex-direction: row;
+    }
+
+    .histogram-box {
+        width: 50%;
+    }
+}
+
+@media (max-width: 768px) {
+    .controls-section {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .button-container {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .histogram-container {
+        flex-direction: column;
+    }
+
+    .histogram-box {
+        width: 100%;
+    }
+
+    button {
+        width: 100%;
+    }
+}
